@@ -25,7 +25,7 @@ namespace RPSLS
                 }
             }
 
-            if (args.Length < 3 || args.Length > 7)
+            if (args.Length < 3 || args.Length > 7 || args.Length == 1 || args.Length ==0)
             {
                 Console.WriteLine("Количество аргументов должно быть в пределах от 3 до 7");
                 Console.WriteLine("Пример: " + System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location) +

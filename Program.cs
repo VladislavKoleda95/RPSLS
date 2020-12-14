@@ -32,31 +32,22 @@ namespace RPSLS
                 byte[] SecretKey = Encoding.ASCII.GetBytes(HMAC.ByteToString(secretkey));
 
                 Console.WriteLine("Hash " + HMAC.Encode(input, SecretKey));
-              
-                do
-                {
-                    Game.Messages.AvailableMoves(args);
+                
+                Game.Messages.AvailableMoves(args);
 
-                    Console.WriteLine("Enter your move:");
+                Console.Write("Enter your move:");
 
-                    playermove = Game.ChoiceMove.Move(args);
+                playermove = Game.ChoiceMove.Move(args);
+           
+                Console.WriteLine("Your move: " + args[playermove]);
 
-                    Game.Game.RPCLS(playermove, computermove, args);
+                Console.WriteLine("Computer move:" + input + "\n");
+                 
+                Game.Game.RPCLS(playermove, computermove, args);
 
-                    Console.WriteLine("Your move: " + args[playermove]);
+                Console.WriteLine("HMAC Key " + HMAC.ByteToString(secretkey) + "\n");
 
-                    Console.WriteLine("Computer move:" + input + "\n");
-
-                    Game.Game.RPCLS(playermove, computermove, args);
-
-                    Console.WriteLine("HMAC Key " + HMAC.ByteToString(secretkey) + "\n");
-
-                } while (playermove > 0 && playermove < 7);
-
-            }
-
-
-            
+            } 
         }
     }
 }

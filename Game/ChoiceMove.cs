@@ -13,15 +13,26 @@ namespace RPSLS.Game
             int index = default;
 
             int playermove = default;
+
+            bool result = default;
+
+            do
+            {
+                result = int.TryParse(Console.ReadLine(), out index);
+                if (index < 0 || index > str.Length || result == false)
+                {
+                    Console.WriteLine("Выберите правильный пункт меню:");
+                }
+
+            } while (index < 0 || index > str.Length || result == false);
             
-            bool result = int.TryParse(Console.ReadLine(), out index);
 
             if (index == 0)
             {
                 System.Diagnostics.Process.GetCurrentProcess().Kill();
             }
 
-            if (str.Length == 3)
+            if (str.Length == 3 && result == true)
             {
                 switch (index)
                 {
@@ -36,7 +47,7 @@ namespace RPSLS.Game
                         break;
                 }
             }
-            else if (str.Length == 5)
+            else if (str.Length == 5 && result == true)
             {
                 switch (index)
                 {
@@ -57,7 +68,7 @@ namespace RPSLS.Game
                         break;
                 }
             }
-            else if (str.Length == 7)
+            else if (str.Length == 7 && result == true)
             {
                 switch (index)
                 {
@@ -85,8 +96,9 @@ namespace RPSLS.Game
                 }
 
             }
-
+            
             return playermove;
+               
         }
     }
 }
